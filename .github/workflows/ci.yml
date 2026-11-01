@@ -1,0 +1,43 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.12', '3.13']
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: aidataready
+          POSTGRES_PASSWORD: test-only
+          POSTGRES_DB: aidataready_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      AIDATAREADY_TEST_DATABASE_URL: postgresql+psycopg://aidataready:test-only@localhost:5432/aidataready_test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+          version: '0.13.6'
+      - run: uv sync --locked --all-extras
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy src
+      - run: uv run pytest --cov --cov-report=term-missing --cov-report=xml --junitxml=test-results.xml
+      - run: uv run aidataready check --config examples/rag.yaml
+      - run: uv run aidataready report --format html
+      - run: uv build

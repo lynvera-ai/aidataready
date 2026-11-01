@@ -1,0 +1,14 @@
+project:
+  name: postgres-documents
+source:
+  type: postgres
+  name: documents
+  url_env: AIDATAREADY_DATABASE_URL
+  schema_name: public
+  table: documents
+  allowed_tables: [documents]
+  timeout_ms: 5000
+profile: general
+rules:
+  required_fields: [id, content]
+  unique_fields: [id]
