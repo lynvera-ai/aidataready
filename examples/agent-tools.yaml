@@ -1,0 +1,13 @@
+project:
+  name: support-tools
+source:
+  type: jsonl
+  path: data/tool-records.jsonl
+profile: agent-tools
+agent:
+  version: '1'
+  tool_fields: [query]
+  field_descriptions:
+    query: Support lookup text.
+  allowed_actions: [read]
+  action_field: action

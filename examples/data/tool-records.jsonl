@@ -1,0 +1,2 @@
+{"id":"tool-1","query":"order status","action":"read","authorization":"support"}
+{"id":"tool-2","query":"shipping options","action":"read","authorization":"support"}
