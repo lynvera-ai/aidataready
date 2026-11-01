@@ -28,6 +28,7 @@ aidataready = "lynvera_aidataready.cli:app"
 
 [project.urls]
 Homepage = "https://aidataready.lynvera.ai"
+Documentation = "https://github.com/lynvera-ai/aidataready/blob/main/docs/README.md"
 Repository = "https://github.com/lynvera-ai/aidataready"
 
 [tool.ruff]

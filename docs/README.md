@@ -3,6 +3,8 @@
 AIDataReady checks local data against contracts for AI applications.
 Version 0.1.0 is the initial library and CLI MVP.
 
+Visit the [official AIDataReady website](https://aidataready.lynvera.ai).
+
 ## Start here
 
 | Goal | Guide |
