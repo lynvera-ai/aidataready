@@ -1,0 +1,18 @@
+project:
+  name: training-data
+source:
+  type: jsonl
+  path: data/training.jsonl
+profile: machine-learning
+rules:
+  required_fields: [id, event_date, split]
+  unique_fields: [id]
+  target: target
+  max_class_fraction: 0.8
+  max_cardinality:
+    target: 2
+  forbidden_features: [future_outcome]
+  temporal_split:
+    field: event_date
+    split_field: split
+    cutoff: '2026-10-01'

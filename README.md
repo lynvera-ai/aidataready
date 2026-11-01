@@ -1,113 +1,175 @@
-# Lynvera AIDataReady
+<p align="center">
+  <img src="docs/assets/readme-banner.svg" alt="AIDataReady by Lynvera. Data readiness for AI." width="1200">
+</p>
 
-Know your data. Build reliable AI.
+<h1 align="center">Lynvera AIDataReady</h1>
 
-Local Python toolkit for data readiness checks for AI, RAG, machine learning,
-and agent tools. Python 3.12 or later. Apache License 2.0.
+<p align="center">
+  <a href="docs/getting-started.md"><img src="docs/assets/docs.svg" alt="Documentation: get started" height="30"></a>
+  <a href="docs/releases.md"><img src="docs/assets/status.svg" alt="Status: 0.1.0 MVP" height="30"></a>
+  <a href="LICENSE"><img src="docs/assets/license.svg" alt="License: Apache 2.0" height="30"></a>
+  <a href="docs/getting-started.md#installation"><img src="docs/assets/python.svg" alt="Python: 3.12 or newer" height="30"></a>
+  <a href="docs/es/getting-started.md"><img src="docs/assets/spanish.svg" alt="Guía rápida en español" height="30"></a>
+</p>
 
-## Install
+<p align="center">
+  <a href="https://aidataready.lynvera.ai">Official website</a>
+  <a href="docs/README.md">Documentation</a>
+  <a href="docs/python-api.md">Python API</a>
+  <a href="docs/cli.md">CLI reference</a>
+  <a href="docs/es/getting-started.md">Español</a>
+</p>
 
-From this checkout:
+**Know your data. Build reliable AI.**
+
+Check whether your data meets the contracts for RAG, machine learning, and agent
+tools. Run local assessments from Python or the command line. No models, paid
+services, accounts, or telemetry are needed.
+
+**Version 0.1.0, initial MVP.** Python 3.12 or newer. Apache License 2.0.
+The package is available from source and has not been published to PyPI.
+
+## What you can check
+
+| Profile | Checks |
+| --- | --- |
+| `general` | Required fields, logical types, nulls, duplicate IDs, ranges, formats, supplied references, freshness, and schema changes. |
+| `rag` | Document IDs, usable text, provenance, versions, exact duplicates, and required filter or permission metadata. |
+| `machine-learning` | A configured target, class balance, cardinality, temporal splits, and declared leakage risks. |
+| `agent-tools` | IDs, tool fields, documented schemas, contract versions, allowed actions, and authorization metadata. |
+
+Sources include CSV, JSON arrays, JSONL, Parquet, PostgreSQL, and Python records.
+Checks use supplied contracts and evidence. They do not certify model quality,
+retrieval quality, or effective access permissions.
+
+## Quick start
+
+On macOS or Linux, with Git and Python 3.12 or newer:
 
 ```bash
-uv sync --all-extras
-uv run aidataready --help
-```
-
-For a local package installation:
-
-```bash
+git clone https://github.com/lynvera-ai/aidataready.git
+cd aidataready
+python3 -m venv .venv
+source .venv/bin/activate
 python -m pip install .
-python -m pip install '.[postgres,pandera]'
+aidataready check --config examples/rag.yaml
+aidataready report --format html
 ```
 
-The package has not been published to PyPI.
+The included synthetic documents pass the contract. The first summary line is:
 
-## Quickstart
-
-```bash
-uv run aidataready check --config examples/rag.yaml
-uv run aidataready profile --config examples/rag.yaml
-uv run aidataready report --format html
-uv run aidataready report --format junit
-uv run aidataready version
+```text
+local-knowledge: PASS. Records: 2.
 ```
 
 Open `aidataready-report.html` locally. It has severity, category, and source
-filters. No external scripts, models, or AI services are used.
+filters and loads no external assets. Reports contain counts and field names,
+without record samples.
 
-Create your own contract with `aidataready init`. File paths are relative to the
-contract. `check` writes JSON by default. `report` converts a saved JSON result.
+To see a controlled failure:
+
+```bash
+aidataready check --config examples/duplicate-ids.yaml --output duplicates.json
+aidataready report --input duplicates.json --output duplicates.html
+```
+
+The check reports `FAIL`, with one duplicate ID, and exits 1. That exit code
+means a data problem was found. The report can still be generated.
+
+The [getting started guide](docs/getting-started.md) covers Windows, uv, local
+packages, and your first contract. The distribution is `lynvera-aidataready`;
+the import package is `lynvera_aidataready`.
+
+## Read the result
+
+| Status | `check` exit code | Meaning |
+| --- | ---: | --- |
+| PASS | 0 | The examined data meets the configured checks. |
+| WARN | 0 | A warning needs review, such as class imbalance or possible sensitive data. |
+| FAIL | 1 | At least one contract violation was found. |
+| ERROR | 2 | Source access or execution prevented assessment. |
+| INCONCLUSIVE | 2 | Evidence is missing or the scan cannot establish a result. |
+
+Overall precedence is ERROR, FAIL, INCONCLUSIVE, WARN, PASS. Empty data is
+inconclusive. Partial scans cannot produce passing findings. See the
+[CLI reference](docs/cli.md) and [contract reference](docs/contracts.md).
+
+## Use it from Python
 
 ```python
 from lynvera_aidataready import Assessment
 
 result = Assessment.from_config("examples/rag.yaml").run()
 print(result.status)
+print(result.rows_examined)
 ```
 
-## Implemented
+The [Python API guide](docs/python-api.md) covers in-memory records, report
+writers, source extensions, and optional Pandera schemas.
 
-CSV, JSON arrays, JSONL, Parquet, PostgreSQL, and in-memory sources support batch
-processing. PostgreSQL uses allowed tables, bound filter values, read-only
-transactions, and timeouts. Credentials come from an environment variable.
+## Connect your data
 
-The `general`, `rag`, `machine-learning`, and `agent-tools` profiles combine
-contract checks. These cover required fields, logical types, nulls, duplicates,
-ranges, known formats, supplied reference sets, freshness, schema changes, row
-count changes, RAG metadata, text length, class balance, cardinality, temporal
-splits, forbidden features, and agent contract metadata.
+Create a YAML contract with `aidataready init`. Choose your source, profile,
+required fields, and limits. Paths are relative to the contract file.
+[Profiles](docs/profiles.md) explain which rules each use case adds.
 
-Results use PASS, WARN, FAIL, ERROR, and INCONCLUSIVE. Each finding includes a
-code, severity, category, evidence, examined count, violations, recommendation,
-and limitations. Reports support JSON, local HTML, JUnit XML, and plain terminal
-summaries. There is no readiness score.
+For PostgreSQL, install the driver from the checkout:
 
-Exit codes: 0 for PASS or WARN, 1 for FAIL, 2 for ERROR or INCONCLUSIVE.
+```bash
+python -m pip install '.[postgres]'
+```
 
-## Limits
+Credentials come from a named environment variable. Queries use allowed tables,
+bound equality filters, read-only transactions, and timeouts. Use a SELECT-only
+role. The [PostgreSQL guide](docs/postgresql.md) provides setup and contract details.
 
-Checks assess the supplied contract. They do not establish model quality,
-retrieval quality, valid permissions, stable IDs over time, or complete privacy
-coverage. Personal data detection is optional and heuristic. Reports contain
-counts and field names, without record samples or values. Dataset values and
-SQL credentials are withheld from execution errors.
+## Examples and validation
 
-Row limits make the scan incomplete. Distinct limits make affected checks
-inconclusive unless a violation is already proven. Memory budgets check batches
-after decoding; they are not a hard process memory cap. See the
-[contract reference](docs/contracts.md) for exact semantics.
+| Example | Purpose | Expected result |
+| --- | --- | --- |
+| [RAG documents](examples/README.md#rag-documents) | Check document text and metadata. | PASS for the supplied fixture and freshness window. |
+| [Duplicate IDs](examples/README.md#duplicate-ids) | Inspect a known data failure. | FAIL, exit 1. |
+| [Machine learning](examples/README.md#machine-learning) | Check target balance and a temporal split. | PASS. |
+| [Agent tools](examples/README.md#agent-tools) | Check tool fields and action metadata. | PASS. |
+| [PostgreSQL](docs/postgresql.md) | Assess an allowed table with a read-only role. | Depends on your table. |
 
-No telemetry is sent. Examples run offline after dependencies are installed.
+The MVP validation passed 70 tests, including PostgreSQL, with 99.22% total
+coverage including branches. A clean wheel installation was checked on macOS
+ARM64 with Python 3.12. CI runs Python 3.12 and 3.13 on Linux.
+See [validation conditions](docs/validation.md) and
+[GitHub Actions](https://github.com/lynvera-ai/aidataready/actions/workflows/ci.yml).
+
+## Scope and limits
+
+Personal data detection is optional and heuristic. It can miss sensitive data
+or flag ordinary values. Field and source names remain visible in reports.
+
+Batch budgets are checked after decoding and are not hard process memory caps.
+Distinct tracking has a configured limit. Exact duplicate checks do not measure
+semantic similarity. Read the [contract limits](docs/contracts.md#results-and-budgets).
+
 MySQL, Oracle, object storage, model evaluation, and semantic text scoring are
-not implemented.
+not implemented. The package sends no telemetry. Examples run offline after
+installation; dependency installation usually needs network access.
 
-## Development
+## Documentation and development
 
-```bash
-uv sync --locked --all-extras
-uv run ruff check .
-uv run ruff format --check .
-uv run mypy src
-uv run pytest --cov --cov-report=term-missing
-uv build
-```
+Start at the [documentation index](docs/README.md). Use
+[troubleshooting](docs/troubleshooting.md) when a check fails and
+[maintenance](docs/maintenance.md) to update or remove an installation.
 
-PostgreSQL tests need a disposable database. They create and remove the
-`aidataready_test` schema. Never point them at production.
+[Contributing](CONTRIBUTING.md) covers checks and disposable database tests.
+[Release guidance](docs/releases.md) describes local builds and current status.
+No automatic package publication is configured.
 
-```bash
-export AIDATAREADY_TEST_DATABASE_URL='postgresql+psycopg://user:password@localhost/test'
-uv run pytest -m postgres
-```
+## Security and license
 
-The CI workflow supplies PostgreSQL and requires 85% coverage, including branches.
+Read [SECURITY.md](SECURITY.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md),
+[LICENSE](LICENSE), and the [dependency license review](docs/dependencies.md).
 
-See [architecture](docs/architecture.md), [tool review](docs/tool-review.md),
-and [dependency licenses](docs/dependencies.md).
-
-Created and maintained by Dr. Felipe Castillo Rendón.
+Created and maintained by **Dr. Felipe Castillo Rendón**.
 
 Lynvera Open Source.
 
-https://lynvera.ai
+[lynvera.ai](https://lynvera.ai)
+felipe.castillo@lynvera.ai

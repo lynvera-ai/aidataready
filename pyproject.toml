@@ -27,7 +27,8 @@ dev = ["pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "mypy>=1.15,<2", "p
 aidataready = "lynvera_aidataready.cli:app"
 
 [project.urls]
-Homepage = "https://lynvera.ai"
+Homepage = "https://aidataready.lynvera.ai"
+Documentation = "https://github.com/lynvera-ai/aidataready/blob/main/docs/README.md"
 Repository = "https://github.com/lynvera-ai/aidataready"
 
 [tool.ruff]

@@ -1,0 +1,9 @@
+project:
+  name: duplicate-ids
+source:
+  type: csv
+  path: data/duplicate-ids.csv
+profile: general
+rules:
+  required_fields: [id, name]
+  unique_fields: [id]

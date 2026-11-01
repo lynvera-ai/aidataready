@@ -1,0 +1,4 @@
+{"id":1,"target":"yes","event_date":"2026-09-01","split":"train"}
+{"id":2,"target":"no","event_date":"2026-09-02","split":"train"}
+{"id":3,"target":"yes","event_date":"2026-10-01","split":"test"}
+{"id":4,"target":"no","event_date":"2026-10-02","split":"test"}
