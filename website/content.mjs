@@ -7,7 +7,7 @@ export const copy = {
     description:
       "Open-source Python toolkit for assessing data against contracts for AI, RAG, machine learning and agent tools. Run locally. Review clear reports.",
     skip: "Skip to content",
-    nav: ["Profiles", "Workflow", "Get started", "Documentation"],
+    guide: "Guide",
     language: "Español",
     eyebrow: "LYNVERA OPEN SOURCE",
     product: "Lynvera AIDataReady",
@@ -173,7 +173,7 @@ export const copy = {
     description:
       "Herramienta Python de código abierto para evaluar contratos de datos para IA, RAG, machine learning y herramientas de agentes. Ejecución e informes locales.",
     skip: "Saltar al contenido",
-    nav: ["Perfiles", "Flujo de uso", "Comenzar", "Documentación"],
+    guide: "Guía",
     language: "English",
     eyebrow: "LYNVERA OPEN SOURCE",
     product: "Lynvera AIDataReady",

@@ -117,6 +117,15 @@ locally under its included SIL Open Font License in `assets/manrope-license.txt`
 The social card is a local SVG with a pre-rendered PNG for social crawlers; its
 PNG is committed so site builds require no graphics dependency.
 
+The shared header, project navigation, typography, buttons and compact footer
+follow RAGParity's product-site conventions: sticky 90 px desktop header,
+164 by 48 px logo, 1,180 px maximum shell, Manrope 500 headings, 12 px / 600
+buttons and a three-link Guide / GitHub / language navigation. The mobile header
+wraps at 680 px. AIDataReady retains mint accents, product content and local
+assets. Anchor spacing keeps the guide visible below the sticky mobile header.
+Author attribution, the Apache license and felipe.castillo@lynvera.ai remain in
+the footer. Visual alignment requires no new dependencies or hosting resources.
+
 Author and maintainer: Dr. Felipe Castillo Rendón, `fcastillorendon`.
 Organization: Lynvera Open Source. Project license: Apache License 2.0.
 Contact: felipe.castillo@lynvera.ai.
