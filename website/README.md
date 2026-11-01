@@ -21,6 +21,18 @@ from `pyproject.toml` and validates the stored synthetic example version.
 `npm --prefix website run check` checks syntax, content, links, metadata,
 artifact sizes, security headers and actual saved example results.
 
+For public HTTPS verification after building, run:
+
+```bash
+node website/scripts/smoke.mjs https://aidataready.lynvera.ai
+```
+
+This checks deployed files against the local artifact, redirects, 404s, headers
+and report attachments. It tolerates only Cloudflare's consumed email opt-out
+comments and its existing managed robots prefix, while requiring the original
+robots policy and sitemap to remain intact. See [VERIFICATION.md](VERIFICATION.md)
+for the publication record.
+
 The separate Website workflow builds and checks only the site and uploads a
 seven-day build artifact. It does not deploy, install Python dependencies or
 send email. Existing Python CI is preserved. No automatic package publication
