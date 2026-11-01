@@ -1,0 +1,16 @@
+project:
+  name: local-knowledge
+source:
+  type: csv
+  path: data/documents.csv
+  name: documents
+profile: rag
+rag:
+  permission_field: access
+rules:
+  required_fields: [updated_at]
+  types:
+    document_id: integer
+  freshness:
+    field: updated_at
+    max_age_days: 3650

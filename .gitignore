@@ -218,3 +218,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local assessment reports
+/aidataready-result.json
+/aidataready-report.html
+/aidataready-report.json
+/aidataready-report.xml
