@@ -3,6 +3,8 @@
 AIDataReady revisa datos locales con contratos para RAG, ML y herramientas de
 agentes. Necesitas Python 3.12 o posterior. Los ejemplos usan datos sintéticos.
 
+Visita el [sitio oficial de AIDataReady](https://aidataready.lynvera.ai).
+
 ## Instalar
 
 En macOS o Linux:
