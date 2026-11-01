@@ -1,0 +1,194 @@
+{
+  "project": "support-tools",
+  "source": "dataset",
+  "profile": "agent-tools",
+  "created_at": "2026-11-01T22:54:58.701818Z",
+  "findings": [
+    {
+      "code": "agent.allowed_actions",
+      "category": "agent",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "action",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Use actions allowed by the contract.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "id",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "authorization",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "query",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "action",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "source.nonempty",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {},
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "operations.batch_schema",
+      "category": "operations",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "changed_batches": 0
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "structure.unique",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "id"
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "agent.contract_version",
+      "category": "agent",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {},
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "agent.action_definitions",
+      "category": "agent",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {},
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "agent.documented_schema",
+      "category": "agent",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "fields": []
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    }
+  ],
+  "rows_examined": 2,
+  "complete": true,
+  "statistics": {
+    "rows": 2,
+    "batches": 1,
+    "columns": {
+      "id": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "query": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "action": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "authorization": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["str"]
+      }
+    }
+  },
+  "status": "PASS"
+}

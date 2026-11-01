@@ -1,0 +1,200 @@
+{
+  "project": "training-data",
+  "source": "dataset",
+  "profile": "machine-learning",
+  "created_at": "2026-11-01T22:54:52.675893Z",
+  "findings": [
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "id",
+        "missing_fields": false
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "event_date",
+        "missing_fields": false
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "split",
+        "missing_fields": false
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "target",
+        "missing_fields": false
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "ml.temporal_split",
+      "category": "ml",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "event_date",
+        "missing_fields": false
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Keep training records before the cutoff and test records after it.",
+      "limitations": []
+    },
+    {
+      "code": "source.nonempty",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {},
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "operations.batch_schema",
+      "category": "operations",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "changed_batches": 0
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "structure.unique",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "id"
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "ml.cardinality",
+      "category": "ml",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "target",
+        "distinct": 2
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "ml.class_balance",
+      "category": "ml",
+      "severity": "warning",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "target": "target",
+        "largest_class_fraction": 0.5
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "ml.forbidden_feature",
+      "category": "ml",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "future_outcome"
+      },
+      "examined": 4,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    }
+  ],
+  "rows_examined": 4,
+  "complete": true,
+  "statistics": {
+    "rows": 4,
+    "batches": 1,
+    "columns": {
+      "id": {
+        "missing": 0,
+        "distinct": 4,
+        "distinct_complete": true,
+        "types": ["int"]
+      },
+      "target": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "event_date": {
+        "missing": 0,
+        "distinct": 4,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "split": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["str"]
+      }
+    }
+  },
+  "status": "PASS"
+}

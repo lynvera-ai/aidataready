@@ -1,0 +1,28 @@
+{
+  "version": "0.1.0",
+  "verifiedAt": "2026-11-01T22:55:04.778505+00:00",
+  "sourceCommit": "a7c2c4b3e429617ccb4ad293209e09f2b8e519b6",
+  "synthetic": true,
+  "examples": {
+    "rag": {
+      "summary": "local-knowledge: PASS. Records: 2.",
+      "exitCode": 0,
+      "records": 2
+    },
+    "duplicates": {
+      "summary": "duplicate-ids: FAIL. Records: 2.",
+      "exitCode": 1,
+      "records": 2
+    },
+    "ml": {
+      "summary": "training-data: PASS. Records: 4.",
+      "exitCode": 0,
+      "records": 4
+    },
+    "agent": {
+      "summary": "support-tools: PASS. Records: 2.",
+      "exitCode": 0,
+      "records": 2
+    }
+  }
+}

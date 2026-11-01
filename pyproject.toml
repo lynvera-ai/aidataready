@@ -56,3 +56,6 @@ fail_under = 85
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/lynvera_aidataready"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/website"]
