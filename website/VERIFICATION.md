@@ -71,3 +71,31 @@ No coverage percentage is advertised on the site. No customer data, live model
 assessment or email sending was involved.
 
 The pull request remains open for review. No merge to `main` was performed.
+
+## RAGParity visual alignment, November 1, 2026
+
+Published implementation: `bb9df7eb39f537dea122f6ec577323e1dbe1b1fa`.
+Production deployment: `f2acefa5-296e-4b12-913a-32a37db399cd`.
+Immutable preview: https://f2acefa5.lynvera-aidataready.pages.dev.
+The 34-file upload is 106,007 bytes with SHA256
+`98cdf5e1ee753b3c7899d8989a80ef051f414a76f3008187eee947a87fa5a4d3`.
+
+Header, project navigation, Manrope type scale, button dimensions and compact
+footer now follow RAGParity. Mint accents, attribution, license and the product
+contact remain. The header is sticky, with mobile anchor spacing adjusted so
+the installation guide stays visible below it.
+
+The build and four existing website checks passed. Both language layouts were
+checked at 390, 768 and 1440 CSS pixels in the integrated browser without page
+overflow. Desktop Chrome was also inspected. All ten copy controls passed;
+language navigation preserved the guide anchor. Computed contrast checks found
+no failures in the 167 opaque-background text elements checked. The shared
+translucent header uses RAGParity's light text on its near-black background.
+No warnings or errors were observed in the public browser console.
+
+The official domain and project preview each passed 33 deployment checks after
+publication, including file integrity, headers, downloads, redirects and 404s.
+Website CI and Python CI both passed for the implementation commit:
+https://github.com/lynvera-ai/aidataready/actions/runs/41362768075 and
+https://github.com/lynvera-ai/aidataready/actions/runs/41362768066.
+This revision changed no DNS records, other sites, package code or dependencies.
