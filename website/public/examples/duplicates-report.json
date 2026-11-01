@@ -1,0 +1,99 @@
+{
+  "project": "duplicate-ids",
+  "source": "dataset",
+  "profile": "general",
+  "created_at": "2026-11-01T22:54:46.621545Z",
+  "findings": [
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "id",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "field": "name",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "source.nonempty",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {},
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "operations.batch_schema",
+      "category": "operations",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "dataset",
+      "evidence": {
+        "changed_batches": 0
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "structure.unique",
+      "category": "structure",
+      "severity": "error",
+      "status": "FAIL",
+      "resource": "dataset",
+      "evidence": {
+        "field": "id"
+      },
+      "examined": 2,
+      "violations": 1,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    }
+  ],
+  "rows_examined": 2,
+  "complete": true,
+  "statistics": {
+    "rows": 2,
+    "batches": 1,
+    "columns": {
+      "id": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["int"]
+      },
+      "name": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["str"]
+      }
+    }
+  },
+  "status": "FAIL"
+}

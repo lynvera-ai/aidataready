@@ -1,0 +1,242 @@
+{
+  "project": "local-knowledge",
+  "source": "documents",
+  "profile": "rag",
+  "created_at": "2026-11-01T22:54:40.557745Z",
+  "findings": [
+    {
+      "code": "rag.text_quality",
+      "category": "rag",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "content",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide usable document text.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "updated_at",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "document_id",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "content",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "source",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "version",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.required",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "access",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Provide a nonempty required field.",
+      "limitations": []
+    },
+    {
+      "code": "structure.type",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "document_id",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Match the contracted type.",
+      "limitations": []
+    },
+    {
+      "code": "operations.freshness",
+      "category": "operations",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "updated_at",
+        "missing_fields": false
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Refresh old records and correct invalid or future dates.",
+      "limitations": []
+    },
+    {
+      "code": "source.nonempty",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {},
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "operations.batch_schema",
+      "category": "operations",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "changed_batches": 0
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "structure.unique",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "document_id"
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    },
+    {
+      "code": "structure.unique",
+      "category": "structure",
+      "severity": "error",
+      "status": "PASS",
+      "resource": "documents",
+      "evidence": {
+        "field": "content"
+      },
+      "examined": 2,
+      "violations": 0,
+      "recommendation": "Review the data and contract.",
+      "limitations": []
+    }
+  ],
+  "rows_examined": 2,
+  "complete": true,
+  "statistics": {
+    "rows": 2,
+    "batches": 1,
+    "columns": {
+      "document_id": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["int"]
+      },
+      "content": {
+        "missing": 0,
+        "distinct": 2,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "source": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "version": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["int"]
+      },
+      "updated_at": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["str"]
+      },
+      "access": {
+        "missing": 0,
+        "distinct": 1,
+        "distinct_complete": true,
+        "types": ["str"]
+      }
+    }
+  },
+  "status": "PASS"
+}
