@@ -33,7 +33,7 @@ createServer(async (req, res) => {
       new URL(req.url, "http://localhost").pathname,
     );
     if (pathname === "/") {
-      res.writeHead(302, { Location: "/en", ...security }).end();
+      res.writeHead(301, { Location: "/en", ...security }).end();
       return;
     }
     if (/\.(?:html)$/.test(pathname) && !pathname.endsWith("/404.html")) {
