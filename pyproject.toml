@@ -9,7 +9,7 @@ description = "Local data readiness checks for AI, RAG, ML, and agents."
 readme = "README.md"
 requires-python = ">=3.12"
 license = "Apache-2.0"
-authors = [{name = "Dr. Felipe Castillo Rendón", email = "felipe.castillo@lynvera.ai"}]
+authors = [{name = "Ph.D. Felipe Castillo Rendón", email = "felipe.castillo@lynvera.ai"}]
 dependencies = [
   "pydantic>=2.10,<3", "typer>=0.15,<1", "rich>=13.9,<15",
   "pandas>=2.2,<3", "SQLAlchemy>=2.0,<3", "pyarrow>=18,<24",

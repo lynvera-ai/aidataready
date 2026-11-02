@@ -168,7 +168,7 @@ No automatic package publication is configured.
 Read [SECURITY.md](SECURITY.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md),
 [LICENSE](LICENSE), and the [dependency license review](docs/dependencies.md).
 
-Created and maintained by **Dr. Felipe Castillo Rendón**.
+Created and maintained by **Ph.D. Felipe Castillo Rendón**.
 
 Lynvera Open Source.
 
