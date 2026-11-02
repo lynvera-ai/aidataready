@@ -126,7 +126,7 @@ assets. Anchor spacing keeps the guide visible below the sticky mobile header.
 Author attribution, the Apache license and felipe.castillo@lynvera.ai remain in
 the footer. Visual alignment requires no new dependencies or hosting resources.
 
-Author and maintainer: Dr. Felipe Castillo Rendón, `fcastillorendon`.
+Author and maintainer: Ph.D. Felipe Castillo Rendón, `fcastillorendon`.
 Organization: Lynvera Open Source. Project license: Apache License 2.0.
 Contact: felipe.castillo@lynvera.ai.
 
