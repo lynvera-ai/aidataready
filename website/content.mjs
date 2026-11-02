@@ -162,7 +162,7 @@ export const copy = {
     closing: "Make the contract explicit.",
     closingText:
       "Start with the included data. Then define what your own application needs.",
-    author: "Created and maintained by",
+    author: "Created and maintained by Dr. Felipe Castillo Rendón.",
     contact: "Contact",
     license: "Apache License 2.0",
     notFound: "Page not found",
@@ -329,7 +329,7 @@ export const copy = {
     closing: "Haz explícito el contrato.",
     closingText:
       "Comienza con los datos incluidos. Después define lo que necesita tu aplicación.",
-    author: "Creado y mantenido por",
+    author: "Creado y mantenido por Dr. Felipe Castillo Rendón.",
     contact: "Contacto",
     license: "Apache License 2.0",
     notFound: "Página no encontrada",

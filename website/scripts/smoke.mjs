@@ -71,7 +71,7 @@ for (const path of await paths(root)) {
   checks++;
 }
 const rootResponse = await fetch(origin, { redirect: "manual" });
-assert.equal(rootResponse.status, 301);
+assert.equal(rootResponse.status, 302);
 assert.equal(
   new URL(rootResponse.headers.get("location"), origin).pathname,
   "/en",

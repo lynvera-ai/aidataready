@@ -35,8 +35,8 @@ test("English and Spanish contain the full product content and valid destination
       assert.ok(html.includes(`id="${id}"`));
     assert.equal((html.match(/<details>/g) || []).length, 6);
     assert.equal((html.match(/data-copy=/g) || []).length, 5);
-    assert.match(html, /mailto:hello@lynvera\.ai/);
-    assert.doesNotMatch(html, /Felipe|Castillo|fcastillorendon|linkedin\.com\/in\//i);
+    assert.match(html, /mailto:felipe\.castillo@lynvera\.ai/);
+    assert.match(html, /Dr\. Felipe Castillo Rendón/);
     assert.match(html, /Apache License 2\.0/);
     assert.match(html, /local-knowledge: PASS\. Records: 2\./);
     assert.match(html, /duplicate-ids: FAIL\. Records: 2\./);
@@ -85,9 +85,7 @@ test("metadata identifies the production domain and both languages", async () =>
       html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1],
     );
     assert.equal(graph.version, "0.1.0");
-    assert.equal(graph.author["@type"], "Organization");
-    assert.equal(graph.author.name, "Lynvera Intelligence");
-    assert.equal(graph.author.url, "https://lynvera.ai");
+    assert.equal(graph.author.name, "Dr. Felipe Castillo Rendón");
   }
   assert.match(
     await read("sitemap.xml"),
@@ -102,7 +100,7 @@ test("metadata identifies the production domain and both languages", async () =>
     /Sitemap: https:\/\/aidataready\.lynvera\.ai\/sitemap.xml/,
   );
   assert.match(await read("404.html"), /content="noindex"/);
-  assert.equal(await read("_redirects"), "/ /en 301\n");
+  assert.equal(await read("_redirects"), "/ /en 302\n");
 });
 
 test("the site stays static, local and within Pages Free asset limits", async () => {

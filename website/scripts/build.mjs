@@ -56,13 +56,13 @@ function head(locale, { notFound = false } = {}) {
     version,
     license: doc("LICENSE"),
     author: {
-      "@type": "Organization",
-      name: "Lynvera Intelligence",
-      url: "https://lynvera.ai",
+      "@type": "Person",
+      name: "Dr. Felipe Castillo Rendón",
+      url: "https://github.com/fcastillorendon",
     },
     publisher: {
       "@type": "Organization",
-      name: "Lynvera Intelligence",
+      name: "Lynvera Open Source",
       url: "https://lynvera.ai",
     },
     inLanguage: locale,
@@ -112,7 +112,7 @@ function page(locale) {
 <section class="shell section" id="reports"><div class="section-heading"><p class="eyebrow">${t.reportsLabel}</p><h2>${t.reportsTitle}</h2></div><div class="reports">${t.reports.map(([title, text], i) => `<article><h3>${title}</h3><p>${text}</p><a class="text-link" href="/examples/rag-report.${["json", "html", "xml"][i]}" download>${t.download} ${title}</a></article>`).join("")}</div>${code("report-commands", t.reportCaption, reports, t)}<p class="small">${t.reportNote}</p></section>
 <section class="band" id="docs"><div class="shell section docs-layout"><div><p class="eyebrow">${t.docsLabel}</p><h2>${t.docsTitle}</h2><div class="doc-links">${t.docs.map((label, i) => `<a href="${doc(i === 0 && locale === "es" ? "docs/es/getting-started.md" : documentation[i])}"><span class="index">0${i + 1}</span>${label}</a>`).join("")}</div></div><div class="faq"><h3>${t.faqTitle}</h3>${t.faq.map(([q, a]) => `<details><summary>${q}<span class="expand" aria-hidden="true"></span></summary><p>${a}</p></details>`).join("")}</div></div></section>
 <section class="shell closing"><div><h2>${t.closing}</h2><p>${t.closingText}</p></div><a class="button primary" href="#start">${t.start}</a></section></main>
-<div class="footer-band"><footer class="shell footer"><a href="https://lynvera.ai/${locale}">Lynvera Intelligence</a><span>© 2026</span><a href="https://www.linkedin.com/company/lynvera/">LinkedIn</a><a href="${repository}">GitHub</a><a href="https://ragparity.lynvera.ai/${locale}">RAGParity</a><a href="${doc("LICENSE")}">${t.license}</a><!--email_off--><a href="mailto:hello@lynvera.ai">hello@lynvera.ai</a><!--/email_off--><p>${t.author} <a href="https://github.com/lynvera-ai">Lynvera Intelligence</a>.</p></footer></div></body></html>`;
+<div class="footer-band"><footer class="shell footer"><a href="https://lynvera.ai/${locale}">Lynvera Intelligence</a><span>© 2026</span><a href="https://www.linkedin.com/company/lynvera/">LinkedIn</a><a href="${repository}">GitHub</a><a href="https://ragparity.lynvera.ai/${locale}">RAGParity</a><a href="${doc("LICENSE")}">${t.license}</a><!--email_off--><a href="mailto:felipe.castillo@lynvera.ai">felipe.castillo@lynvera.ai</a><!--/email_off--><p>${t.author} <a href="https://github.com/fcastillorendon">fcastillorendon</a> / Lynvera Open Source.</p></footer></div></body></html>`;
 }
 
 await rm(dist, { recursive: true, force: true });
@@ -126,14 +126,14 @@ await writeFile(
   join(dist, "404.html"),
   `${head("en", { notFound: true })}<body><main class="shell section"><p class="eyebrow">404</p><h1>Page not found</h1><p>Página no encontrada</p><div class="actions"><a class="button primary" href="/en">English</a><a class="button" href="/es">Español</a></div></main></body></html>`,
 );
-await writeFile(join(dist, "_redirects"), "/ /en 301\n");
+await writeFile(join(dist, "_redirects"), "/ /en 302\n");
 await writeFile(
   join(dist, "robots.txt"),
   `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`,
 );
 await writeFile(
   join(dist, "sitemap.xml"),
-  `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${["en", "es"].map((locale) => `<url><loc>${origin}/${locale}</loc><lastmod>2026-11-01</lastmod>${["en", "es", "x-default"].map((lang) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${origin}/${lang === "es" ? "es" : "en"}"/>`).join("")}</url>`).join("")}</urlset>`,
+  `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">${["en", "es"].map((locale) => `<url><loc>${origin}/${locale}</loc>${["en", "es", "x-default"].map((lang) => `<xhtml:link rel="alternate" hreflang="${lang}" href="${origin}/${lang === "es" ? "es" : "en"}"/>`).join("")}</url>`).join("")}</urlset>`,
 );
 const jsonHash = createHash("sha256")
   .update(
